@@ -6,6 +6,6 @@
 
 * [JSX](1ac15/jsx.md)
 * [Props & State](1ac15/props-and-state.md)
-* [LifeCycle API](1ac15/todolistae30-bcf829.md)
+* [LifeCylce API](1ac15/lifecylce-api.md)
 * [Todolist\(기본\)](1ac15/todolistae30-bcf829.md)
 
