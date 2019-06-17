@@ -1,0 +1,602 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Todolist(기본) · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="lifecylce-api.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    작업환경설정
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">1강</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="jsx.html">
+            
+                <a href="jsx.html">
+            
+                    
+                    JSX
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="props-and-state.html">
+            
+                <a href="props-and-state.html">
+            
+                    
+                    Props & State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="lifecylce-api.html">
+            
+                <a href="lifecylce-api.html">
+            
+                    
+                    LifeCylce API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.4" data-path="todolistae30-bcf829.html">
+            
+                <a href="todolistae30-bcf829.html">
+            
+                    
+                    Todolist(기본)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Todolist(기본)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="input-&#xAD00;&#xB9AC;">input &#xAD00;&#xB9AC;</h3>
+<pre><code class="lang-jsx"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  state = {
+    input: <span class="hljs-string">&apos;&apos;</span>
+  };
+  handleChange = e =&gt; {
+    <span class="hljs-keyword">this</span>.setState({
+      input: e.target.value
+    });
+  };
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state.input}</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#xD604;&#xC7AC; input &#xAC12;: {this.state.input}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    );
+  }
+}
+
+export default App;
+</span></code></pre>
+<h4 id="&#xBCF5;&#xC218;-input&#xAD00;&#xB9AC;">&#xBCF5;&#xC218; input&#xAD00;&#xB9AC;</h4>
+<pre><code class="lang-jsx"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  state = {
+    username: <span class="hljs-string">&apos;&apos;</span>,
+    job: <span class="hljs-string">&apos;&apos;</span>
+  };
+  handleChange = e =&gt; {
+    <span class="hljs-comment">// name &#xACFC; value &#xB97C; &#xC774;&#xBCA4;&#xD2B8; &#xAC1D;&#xCCB4;&#xC5D0;&#xC11C; &#xC870;&#xD68C;&#xD569;&#xB2C8;&#xB2E4;.</span>
+    <span class="hljs-keyword">const</span> { value, name } = e.target;
+    <span class="hljs-keyword">this</span>.setState({
+      [name]: value
+    });
+  };
+  render() {
+    <span class="hljs-keyword">const</span> { username, job } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;
+        &lt;input
+          name=&quot;username&quot;
+          placeholder=&quot;&#xC720;&#xC800;&#xBA85;&quot;
+          value={username}
+          onChange={this.handleChange}
+        /&gt;
+        &lt;input
+          name=&quot;job&quot;
+          placeholder=&quot;&#xC9C1;&#xC5C5;&quot;
+          value={job}
+          onChange={this.handleChange}
+        /&gt;
+        &lt;p&gt;
+          {username} &#xC758; &#xC9C1;&#xC5C5;&#xC740; {job}&#xC785;&#xB2C8;&#xB2E4;.
+        &lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default App;
+</code></pre>
+<h4 id="&#xBC30;&#xC5F4;&#xC5D0;&#xAC12;&#xC744;-&#xCD94;&#xAC00;&#xD558;&#xACE0;-&#xBCF4;&#xC5EC;&#xC8FC;&#xAE30;">&#xBC30;&#xC5F4;&#xC5D0;&#xAC12;&#xC744; &#xCD94;&#xAC00;&#xD558;&#xACE0; &#xBCF4;&#xC5EC;&#xC8FC;&#xAE30;</h4>
+<pre><code class="lang-jsx"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  id = <span class="hljs-number">1</span>;
+  state = {
+    username: <span class="hljs-string">&apos;&apos;</span>,
+    job: <span class="hljs-string">&apos;&apos;</span>,
+    list: []
+  };
+  handleChange = e =&gt; {
+    <span class="hljs-comment">// name &#xACFC; value &#xB97C; &#xC774;&#xBCA4;&#xD2B8; &#xAC1D;&#xCCB4;&#xC5D0;&#xC11C; &#xC870;&#xD68C;&#xD569;&#xB2C8;&#xB2E4;.</span>
+    <span class="hljs-keyword">const</span> { value, name } = e.target;
+    <span class="hljs-keyword">this</span>.setState({
+      [name]: value
+    });
+  };
+  handleInsert = () =&gt; {
+    <span class="hljs-keyword">const</span> { username, job, list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">this</span>.setState({
+      username: <span class="hljs-string">&apos;&apos;</span>,
+      job: <span class="hljs-string">&apos;&apos;</span>,
+      list: list.concat({ username, job })
+    });
+    <span class="hljs-keyword">this</span>.id += <span class="hljs-number">1</span>; <span class="hljs-comment">// &#xC0C8; &#xB370;&#xC774;&#xD130; &#xB9CC;&#xB4E4;&#xB54C;&#xB9C8;&#xB2E4; +1</span>
+  };
+  render() {
+    <span class="hljs-keyword">const</span> { username, job, list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;
+        &lt;input
+          name=&quot;username&quot;
+          placeholder=&quot;&#xC720;&#xC800;&#xBA85;&quot;
+          value={username}
+          onChange={this.handleChange}
+        /&gt;
+        &lt;input
+          name=&quot;job&quot;
+          placeholder=&quot;&#xC9C1;&#xC5C5;&quot;
+          value={job}
+          onChange={this.handleChange}
+        /&gt;
+        &lt;button onClick={this.handleInsert}&gt;&#xCD94;&#xAC00;&lt;/button&gt;
+        &lt;p&gt;
+          {username} &#xC758; &#xC9C1;&#xC5C5;&#xC740; {job}&#xC785;&#xB2C8;&#xB2E4;.
+        &lt;/p&gt;
+        &lt;ul&gt;
+          {list.map((item, index) =&gt; (
+            &lt;li key={index}&gt;
+              {item.username}({item.job})
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default App;
+</code></pre>
+<h4 id="&#xC0AD;&#xC81C;&#xAD6C;&#xD604;">&#xC0AD;&#xC81C;&#xAD6C;&#xD604;</h4>
+<pre><code class="lang-jsx"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  state = {
+    username: <span class="hljs-string">&apos;&apos;</span>,
+    job: <span class="hljs-string">&apos;&apos;</span>,
+    list: []
+  };
+  id = <span class="hljs-number">1</span>;
+  handleChange = e =&gt; {
+    <span class="hljs-comment">// name &#xACFC; value &#xB97C; &#xC774;&#xBCA4;&#xD2B8; &#xAC1D;&#xCCB4;&#xC5D0;&#xC11C; &#xC870;&#xD68C;&#xD569;&#xB2C8;&#xB2E4;.</span>
+    <span class="hljs-keyword">const</span> { value, name } = e.target;
+    <span class="hljs-keyword">this</span>.setState({
+      [name]: value
+    });
+  };
+  handleInsert = () =&gt; {
+    <span class="hljs-keyword">const</span> { username, job, list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">this</span>.setState({
+      username: <span class="hljs-string">&apos;&apos;</span>,
+      job: <span class="hljs-string">&apos;&apos;</span>,
+      list: list.concat({ id: <span class="hljs-keyword">this</span>.id, username, job })
+    });
+    <span class="hljs-keyword">this</span>.id += <span class="hljs-number">1</span>; <span class="hljs-comment">// &#xC0C8; &#xB370;&#xC774;&#xD130; &#xB9CC;&#xB4E4;&#xB54C;&#xB9C8;&#xB2E4; +1</span>
+  };
+  handleRemove = id =&gt; {
+    <span class="hljs-keyword">const</span> { list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">this</span>.setState({
+      list: list.filter(item =&gt; item.id !== id)
+    });
+  };
+  render() {
+    <span class="hljs-keyword">const</span> { username, job, list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;
+        &lt;input
+          name=&quot;username&quot;
+          placeholder=&quot;&#xC720;&#xC800;&#xBA85;&quot;
+          value={username}
+          onChange={this.handleChange}
+        /&gt;
+        &lt;input
+          name=&quot;job&quot;
+          placeholder=&quot;&#xC9C1;&#xC5C5;&quot;
+          value={job}
+          onChange={this.handleChange}
+        /&gt;
+        &lt;button onClick={this.handleInsert}&gt;&#xCD94;&#xAC00;&lt;/button&gt;
+        &lt;p&gt;
+          {username} &#xC758; &#xC9C1;&#xC5C5;&#xC740; {job}&#xC785;&#xB2C8;&#xB2E4;.
+        &lt;/p&gt;
+        &lt;ul&gt;
+          {list.map(item =&gt; (
+            &lt;li key={item.id}&gt;
+              {item.username}({item.job}){&apos; &apos;}
+              &lt;span
+                onClick={() =&gt; this.handleRemove(item.id)}
+              &gt;
+                [&#xC0AD;&#xC81C;]
+              &lt;/span&gt;
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default App;
+</code></pre>
+<p><strong>form&#xC0AC;&#xC6A9; </strong></p>
+<pre><code class="lang-jsx">        &lt;form onSubmit={<span class="hljs-keyword">this</span>.handleInsert}&gt;
+          <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span>
+            <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;&#xC720;&#xC800;&#xBA85;&quot;</span>
+            <span class="hljs-attr">value</span>=<span class="hljs-string">{username}</span>
+            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
+          /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;job&quot;</span>
+            <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;&#xC9C1;&#xC5C5;&quot;</span>
+            <span class="hljs-attr">value</span>=<span class="hljs-string">{job}</span>
+            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
+          /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>&#xCD94;&#xAC00;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</span></code></pre>
+<pre><code class="lang-jsx">  handleInsert = e =&gt; {
+    e.preventDefault();
+    <span class="hljs-keyword">const</span> { username, job, list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">this</span>.setState({
+      username: <span class="hljs-string">&apos;&apos;</span>,
+      job: <span class="hljs-string">&apos;&apos;</span>,
+      list: list.concat({ id: <span class="hljs-keyword">this</span>.id, username, job })
+    });
+    <span class="hljs-keyword">this</span>.id += <span class="hljs-number">1</span>; <span class="hljs-comment">// &#xC0C8; &#xB370;&#xC774;&#xD130; &#xB9CC;&#xB4E4;&#xB54C;&#xB9C8;&#xB2E4; +1</span>
+  };
+</code></pre>
+<h4 id="ref&#xB85C;-dom&#xCEE8;&#xD2B8;&#xB864;">ref&#xB85C; dom&#xCEE8;&#xD2B8;&#xB864;</h4>
+<pre><code class="lang-jsx"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  state = {
+    username: <span class="hljs-string">&apos;&apos;</span>,
+    job: <span class="hljs-string">&apos;&apos;</span>,
+    list: []
+  };
+  id = <span class="hljs-number">1</span>;
+  usernameInput = <span class="hljs-literal">null</span>;
+  handleChange = e =&gt; {
+    <span class="hljs-comment">// name &#xACFC; value &#xB97C; &#xC774;&#xBCA4;&#xD2B8; &#xAC1D;&#xCCB4;&#xC5D0;&#xC11C; &#xC870;&#xD68C;&#xD569;&#xB2C8;&#xB2E4;.</span>
+    <span class="hljs-keyword">const</span> { value, name } = e.target;
+    <span class="hljs-keyword">this</span>.setState({
+      [name]: value
+    });
+  };
+  handleInsert = e =&gt; {
+    e.preventDefault();
+    <span class="hljs-keyword">const</span> { username, job, list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">this</span>.setState({
+      username: <span class="hljs-string">&apos;&apos;</span>,
+      job: <span class="hljs-string">&apos;&apos;</span>,
+      list: list.concat({ id: <span class="hljs-keyword">this</span>.id, username, job })
+    });
+    <span class="hljs-keyword">this</span>.id += <span class="hljs-number">1</span>; <span class="hljs-comment">// &#xC0C8; &#xB370;&#xC774;&#xD130; &#xB9CC;&#xB4E4;&#xB54C;&#xB9C8;&#xB2E4; +1</span>
+  };
+  handleRemove = id =&gt; {
+    <span class="hljs-keyword">const</span> { list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">this</span>.setState({
+      list: list.filter(item =&gt; item.id !== id)
+    });
+  };
+
+  render() {
+    <span class="hljs-keyword">const</span> { username, job, list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;
+        &lt;form onSubmit={this.handleInsert}&gt;
+          &lt;input
+            name=&quot;username&quot;
+            placeholder=&quot;&#xC720;&#xC800;&#xBA85;&quot;
+            value={username}
+            onChange={this.handleChange}
+            ref={ref =&gt; {
+              this.usernameInput = ref;
+            }}
+          /&gt;
+          &lt;input
+            name=&quot;job&quot;
+            placeholder=&quot;&#xC9C1;&#xC5C5;&quot;
+            value={job}
+            onChange={this.handleChange}
+          /&gt;
+          &lt;button type=&quot;submit&quot;&gt;&#xCD94;&#xAC00;&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;p&gt;
+          {username} &#xC758; &#xC9C1;&#xC5C5;&#xC740; {job}&#xC785;&#xB2C8;&#xB2E4;.
+        &lt;/p&gt;
+        &lt;ul&gt;
+          {list.map(item =&gt; (
+            &lt;li key={item.id}&gt;
+              {item.username}({item.job}){&apos; &apos;}
+              &lt;span
+                style={{ cursor: &apos;pointer&apos; }}
+                onClick={() =&gt; this.handleRemove(item.id)}
+              &gt;
+                [&#xC0AD;&#xC81C;]
+              &lt;/span&gt;
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default App;
+</code></pre>
+<pre><code class="lang-jsx">  handleInsert = e =&gt; {
+    e.preventDefault();
+    <span class="hljs-keyword">const</span> { username, job, list } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">this</span>.setState({
+      username: <span class="hljs-string">&apos;&apos;</span>,
+      job: <span class="hljs-string">&apos;&apos;</span>,
+      list: list.concat({ id: <span class="hljs-keyword">this</span>.id, username, job })
+    });
+    <span class="hljs-keyword">this</span>.id += <span class="hljs-number">1</span>; <span class="hljs-comment">// &#xC0C8; &#xB370;&#xC774;&#xD130; &#xB9CC;&#xB4E4;&#xB54C;&#xB9C8;&#xB2E4; +1</span>
+
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.usernameInput) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// ref &#xAC00; &#xB9CC;&#xC57D;&#xC5D0; &#xC81C;&#xB300;&#xB85C; &#xC124;&#xC815;&#xC774; &#xC548;&#xB418;&#xC5C8;&#xB2E4;&#xBA74; &#xBB34;&#xC2DC;</span>
+    <span class="hljs-keyword">this</span>.usernameInput.focus();
+  };
+</code></pre>
+<p><strong>React.createRef()&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; ref={this.usernameInput}&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; this.usernameInput.current.focus&#xC0AC;&#xC6A9;!</strong></p>
+<p>&#xC2E4;&#xC2B5;&#xB05D;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="lifecylce-api.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: LifeCylce API">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Todolist(기본)","level":"2.4","depth":1,"previous":{"title":"LifeCylce API","level":"2.3","depth":1,"path":"1ac15/lifecylce-api.md","ref":"1ac15/lifecylce-api.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"1ac15/todolistae30-bcf829.md","mtime":"2019-06-17T06:05:23.498Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-17T06:05:44.385Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
