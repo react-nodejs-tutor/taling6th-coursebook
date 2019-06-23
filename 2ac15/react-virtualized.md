@@ -1,5 +1,5 @@
 ```jsx
-// react-virtualized todolist.js
+// react-virtualized Todolist.js
 
 import React, { Component } from 'react';
 import TodoItem from './TodoItem';
@@ -47,7 +47,7 @@ export default TodoList;
 ```
 
 ```jsx
-// react-virtualized todoitem.js
+// react-virtualized Todoitem.js
 
 import React, { Component } from 'react';
 import './TodoItem.css';
