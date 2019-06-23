@@ -1,0 +1,650 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Todolist(구조화) · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="immer-bd88-bcc0-c131-ad00-b9ac.html" />
+    
+    
+    <link rel="prev" href="../1ac15/todolistae30-bcf829.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    작업환경설정
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">1강</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../1ac15/jsx.html">
+            
+                <a href="../1ac15/jsx.html">
+            
+                    
+                    JSX
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../1ac15/props-and-state.html">
+            
+                <a href="../1ac15/props-and-state.html">
+            
+                    
+                    Props & State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../1ac15/lifecylce-api.html">
+            
+                <a href="../1ac15/lifecylce-api.html">
+            
+                    
+                    LifeCylce API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../1ac15/todolistae30-bcf829.html">
+            
+                <a href="../1ac15/todolistae30-bcf829.html">
+            
+                    
+                    Todolist(기본)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">2강</li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="todolistad6c-c870-d65429.html">
+            
+                <a href="todolistad6c-c870-d65429.html">
+            
+                    
+                    Todolist(구조화)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="immer-bd88-bcc0-c131-ad00-b9ac.html">
+            
+                <a href="immer-bd88-bcc0-c131-ad00-b9ac.html">
+            
+                    
+                    Immer 불변성관리
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="react-virtualized.html">
+            
+                <a href="react-virtualized.html">
+            
+                    
+                    react-virtualized
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="bc30-c5f4-b0b4-c7a5-d568-c218.html">
+            
+                <a href="bc30-c5f4-b0b4-c7a5-d568-c218.html">
+            
+                    
+                    배열내장함수
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Todolist(구조화)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <pre><code class="lang-jsx"><span class="hljs-comment">//App.js</span>
+
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;./App.css&apos;</span>;
+<span class="hljs-keyword">import</span> CreateForm <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./CreateForm&apos;</span>;
+<span class="hljs-keyword">import</span> TodoList <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./TodoList&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    id = <span class="hljs-number">1</span>;
+
+    state = {
+        todos: []
+    };
+
+    handleSubmit = text =&gt; {
+        <span class="hljs-keyword">const</span> { todos } = <span class="hljs-keyword">this</span>.state;
+        <span class="hljs-keyword">this</span>.setState({
+            todos: todos.concat({
+                id: <span class="hljs-keyword">this</span>.id++,
+                text,
+                checked: <span class="hljs-literal">false</span>
+            })
+        });
+    };
+
+    handleToggle = id =&gt; {
+        <span class="hljs-keyword">const</span> { todos } = <span class="hljs-keyword">this</span>.state;
+        <span class="hljs-keyword">this</span>.setState({
+            todos: todos.map(todo =&gt; {
+                <span class="hljs-keyword">if</span> (todo.id === id) {
+                    <span class="hljs-keyword">return</span> { ...todo, checked: !todo.checked };
+                }
+                <span class="hljs-keyword">return</span> todo;
+            })
+        });
+    };
+
+    handleRemove = id =&gt; {
+        <span class="hljs-keyword">const</span> { todos } = <span class="hljs-keyword">this</span>.state;
+        <span class="hljs-keyword">this</span>.setState({
+            todos: todos.filter(todo =&gt; todo.id !== id)
+        });
+    };
+
+    render() {
+        <span class="hljs-keyword">const</span> { todos } = <span class="hljs-keyword">this</span>.state;
+
+        <span class="hljs-keyword">return</span> (
+            &lt;div className=&quot;App&quot;&gt;
+                &lt;h3&gt;TODO LIST&lt;/h3&gt;
+                &lt;CreateForm onSubmit={this.handleSubmit} /&gt;
+                &lt;TodoList
+                    todos={todos}
+                    onToggle={this.handleToggle}
+                    onRemove={this.handleRemove}
+                /&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+
+export default App;
+</code></pre>
+<pre><code class="lang-jsx">// App.css
+.App {
+    max-width: 640px;
+    margin: 0 auto;
+    overflow: hidden;
+    font-size: 1.5rem;
+}
+
+.App h3 {
+    margin: 30px 0 0 0;
+    padding: 30px 0;
+    background-color: plum;
+    text-align: center;
+    color: #eee;
+}
+</code></pre>
+<pre><code class="lang-jsx"><span class="hljs-comment">// CreateForm.js</span>
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;./CreateForm.css&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateForm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    state = {
+        input: <span class="hljs-string">&apos;&apos;</span>
+    };
+
+    handleChange = e =&gt; {
+        <span class="hljs-keyword">this</span>.setState({
+            input: e.target.value
+        });
+    };
+
+    handleCreate = e =&gt; {
+        e.preventDefault();
+        <span class="hljs-keyword">this</span>.props.onSubmit(<span class="hljs-keyword">this</span>.state.input);
+        <span class="hljs-keyword">this</span>.setState({
+            input: <span class="hljs-string">&apos;&apos;</span>
+        });
+    };
+
+    render() {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;CreateForm&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;form_container&quot;</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{this.handleCreate}</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;something to do?&quot;</span>
+                        <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state.input}</span>
+                        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
+                    /&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>&#xCD94;&#xAC00;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        );
+    }
+}
+
+export default CreateForm;
+</span></code></pre>
+<pre><code class="lang-jsx">// CreateForm.css
+.CreateForm {
+    padding: 30px 0;
+    background-color: #eee;
+}
+
+.form_container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.form_container input {
+    width: 85%;
+    font-size: 20px;
+    height: 40px;
+    float: left;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+.form_container input:focus {
+    outline: none;
+}
+
+.form_container button {
+    border-radius: 20px;
+    width: 13%;
+    float: right;
+    height: 45px;
+    font-size: 15px;
+}
+</code></pre>
+<pre><code class="lang-jsx"><span class="hljs-comment">//TodoList.js</span>
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> TodoItem <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./TodoItem&apos;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;./TodoList.css&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TodoList</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    render() {
+        <span class="hljs-keyword">const</span> { todos, onToggle, onRemove } = <span class="hljs-keyword">this</span>.props;
+
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;TodoList&quot;</span>&gt;</span>
+                {todos.map(todo =&gt; (
+                    <span class="hljs-tag">&lt;<span class="hljs-name">TodoItem</span>
+                        <span class="hljs-attr">key</span>=<span class="hljs-string">{todo.id}</span>
+                        <span class="hljs-attr">id</span>=<span class="hljs-string">{todo.id}</span>
+                        <span class="hljs-attr">checked</span>=<span class="hljs-string">{todo.checked}</span>
+                        <span class="hljs-attr">text</span>=<span class="hljs-string">{todo.text}</span>
+                        <span class="hljs-attr">onToggle</span>=<span class="hljs-string">{onToggle}</span>
+                        <span class="hljs-attr">onRemove</span>=<span class="hljs-string">{onRemove}</span>
+                        <span class="hljs-attr">todo</span>=<span class="hljs-string">{todo}</span>
+                    /&gt;</span>
+                ))}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        );
+    }
+}
+
+export default TodoList;
+</span></code></pre>
+<pre><code class="lang-jsx">//TodoList.css
+.TodoList {
+    background-color: #fff;
+    padding: 50px 30px;
+}
+</code></pre>
+<pre><code class="lang-jsx"><span class="hljs-comment">//TodoItem.js</span>
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;./TodoItem.css&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TodoItem</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    shouldComponentUpdate(nextProps, nextState) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.props.todo !== nextProps.todo) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+    }
+
+    render() {
+        <span class="hljs-keyword">const</span> { todo, onToggle, onRemove } = <span class="hljs-keyword">this</span>.props;
+
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+                <span class="hljs-attr">className</span>=<span class="hljs-string">{`TodoItem</span> ${<span class="hljs-attr">todo.checked</span> &amp;&amp; &apos;<span class="hljs-attr">active</span>&apos;}`}
+                <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> onToggle(todo.id)}
+            &gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;check&quot;</span>&gt;</span>&amp;#10004;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;remove&quot;</span>
+                    <span class="hljs-attr">onClick</span>=<span class="hljs-string">{e</span> =&gt;</span> {
+                        e.stopPropagation();
+                        onRemove(todo.id);
+                    }}
+                &gt;
+                    [&#xC9C0;&#xC6B0;&#xAE30;]
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>{todo.text}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+        );
+    }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> TodoItem;
+</code></pre>
+<pre><code class="lang-jsx">//TodoItem.css
+.TodoItem {
+    margin-bottom: 30px;
+    border-bottom: 1px dotted #bbb;
+    padding-bottom: 10px;
+    overflow: hidden;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.TodoItem:hover .check,
+.TodoItem:hover .remove {
+    opacity: 0.5;
+}
+
+.TodoItem:last-child {
+    margin-bottom: 0;
+}
+
+.TodoItem.active {
+    text-decoration: line-through;
+    color: #dda0dd;
+}
+
+.TodoItem.active .check {
+    opacity: 0.8;
+}
+
+.TodoItem .check {
+    float: left;
+    opacity: 0;
+}
+
+.TodoItem .text {
+    margin-left: 35px;
+    overflow: hidden;
+}
+
+.TodoItem .remove {
+    float: right;
+    font-size: 1.2rem;
+    opacity: 0;
+}
+</code></pre>
+<pre><code class="lang-jsx">//index.css
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #dedede;
+    font-size: 10px;
+}
+</code></pre>
+<pre><code class="lang-jsx"><span class="hljs-comment">//index.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dom&apos;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;./index.css&apos;</span>;
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./App&apos;</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> serviceWorker <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./serviceWorker&apos;</span>;
+
+ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>, document.getElementById(&apos;root&apos;));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
+</span></code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../1ac15/todolistae30-bcf829.html" class="navigation navigation-prev " aria-label="Previous page: Todolist(기본)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="immer-bd88-bcc0-c131-ad00-b9ac.html" class="navigation navigation-next " aria-label="Next page: Immer 불변성관리">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Todolist(구조화)","level":"3.1","depth":1,"next":{"title":"Immer 불변성관리","level":"3.2","depth":1,"path":"2ac15/immer-bd88-bcc0-c131-ad00-b9ac.md","ref":"2ac15/immer-bd88-bcc0-c131-ad00-b9ac.md","articles":[]},"previous":{"title":"Todolist(기본)","level":"2.4","depth":1,"path":"1ac15/todolistae30-bcf829.md","ref":"1ac15/todolistae30-bcf829.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"2ac15/todolistad6c-c870-d65429.md","mtime":"2019-06-23T07:12:35.302Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-23T07:12:58.373Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
