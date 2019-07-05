@@ -16,3 +16,8 @@
 * [react-virtualized](2ac15/react-virtualized.md)
 * [배열내장함수](2ac15/bc30-c5f4-b0b4-c7a5-d568-c218.md)
 
+## 4강
+
+* [HOC 연습1](4ac15/hoc.md)
+* [HOC 연습2](4ac15/hoc-c5f0-c2b5-2.md)
+
