@@ -344,6 +344,7 @@ const WaitingList = ({ input, waitingList, waitingActions }) => {
                         key={item.id}
                         id={item.id}
                         text={item.name}
+                        entered={item.entered}
                         onEnter={waitingActions.enter}
                         onLeave={waitingActions.leave}
                     />
@@ -382,5 +383,7 @@ class App extends Component {
 export default App;
 ```
 
+생각해보기.
 
+과연 이게 최선인가?
 
