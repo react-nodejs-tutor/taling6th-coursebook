@@ -25,4 +25,5 @@
 ## 5강
 
 * [redux 완성본](5ac15/redux-c644-c131-bcf8.md)
+* [redux thunk](5ac15/redux-advanced.md)
 
