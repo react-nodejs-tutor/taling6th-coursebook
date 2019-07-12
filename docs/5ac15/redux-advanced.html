@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>HOC 연습2 · GitBook</title>
+        <title>redux thunk · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../newsviewer-d504-b85c-c81d-d2b8-react-router.html" />
     
-    
-    <link rel="prev" href="hoc.html" />
+    <link rel="prev" href="redux-c644-c131-bcf8.html" />
     
 
     </head>
@@ -227,9 +225,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="hoc.html">
+        <li class="chapter " data-level="4.1" data-path="../4ac15/hoc.html">
             
-                <a href="hoc.html">
+                <a href="../4ac15/hoc.html">
             
                     
                     HOC 연습1
@@ -240,9 +238,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.2" data-path="hoc-c5f0-c2b5-2.html">
+        <li class="chapter " data-level="4.2" data-path="../4ac15/hoc-c5f0-c2b5-2.html">
             
-                <a href="hoc-c5f0-c2b5-2.html">
+                <a href="../4ac15/hoc-c5f0-c2b5-2.html">
             
                     
                     HOC 연습2
@@ -273,9 +271,9 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../5ac15/redux-c644-c131-bcf8.html">
+        <li class="chapter " data-level="5.1" data-path="redux-c644-c131-bcf8.html">
             
-                <a href="../5ac15/redux-c644-c131-bcf8.html">
+                <a href="redux-c644-c131-bcf8.html">
             
                     
                     redux 완성본
@@ -286,9 +284,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="../5ac15/redux-advanced.html">
+        <li class="chapter active" data-level="5.2" data-path="redux-advanced.html">
             
-                <a href="../5ac15/redux-advanced.html">
+                <a href="redux-advanced.html">
             
                     
                     redux thunk
@@ -329,7 +327,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >HOC 연습2</a>
+        <a href=".." >redux thunk</a>
     </h1>
 </div>
 
@@ -344,117 +342,82 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>&#xC5F0;&#xC2B5;&#xC790;&#xB8CC;</p>
-<pre><code class="lang-jsx">git clone https:<span class="hljs-comment">//github.com/react-nodejs-tutor/hoc-prac-2nd.git</span>
-</code></pre>
-<pre><code class="lang-jsx"><span class="hljs-comment">// src/withForm.js</span>
+                                <p>&#xCD9C;&#xCC98;: velopert(minjun kim)</p>
+<p>thunk &#xC6F9;&#xC694;&#xCCAD; &#xBE44;&#xB3D9;&#xAE30;&#xCC98;&#xB9AC;</p>
+<pre><code class="lang-jsx"><span class="hljs-keyword">import</span> { handleActions } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;redux-actions&apos;</span>;
 
-<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;axios&apos;</span>;
 
-<span class="hljs-keyword">const</span> withForm = (initialForm, reset) =&gt; WrappedComponent =&gt; {
-    <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WithForm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-        state = initialForm || {};
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPostAPI</span>(<span class="hljs-params">postId</span>) </span>{
+    <span class="hljs-keyword">return</span> axios.get(<span class="hljs-string">`https://jsonplaceholder.typicode.com/posts/<span class="hljs-subst">${postId}</span>`</span>)
+}
 
-        handleChange = e =&gt; {
-            <span class="hljs-keyword">const</span> { name, value } = e.target;
+<span class="hljs-keyword">const</span> GET_POST_PENDING = <span class="hljs-string">&apos;GET_POST_PENDING&apos;</span>;
+<span class="hljs-keyword">const</span> GET_POST_SUCCESS = <span class="hljs-string">&apos;GET_POST_SUCCESS&apos;</span>;
+<span class="hljs-keyword">const</span> GET_POST_FAILURE = <span class="hljs-string">&apos;GET_POST_FAILURE&apos;</span>;
 
-            <span class="hljs-keyword">this</span>.state({
-                [name]: value
-            });
-        };
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getPost = (postId) =&gt; dispatch =&gt; {
+    <span class="hljs-comment">// &#xBA3C;&#xC800;, &#xC694;&#xCCAD;&#xC774; &#xC2DC;&#xC791;&#xD588;&#xB2E4;&#xB294;&#xAC83;&#xC744; &#xC54C;&#xB9BD;&#xB2C8;&#xB2E4;</span>
+    dispatch({type: GET_POST_PENDING});
 
-        handleSubmit = e =&gt; {
-            e.preventDefault();
-            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.props.onSubmit) {
-                <span class="hljs-keyword">this</span>.props.onSubmit(<span class="hljs-keyword">this</span>.state);
-            }
-            <span class="hljs-keyword">if</span> (reset) {
-                <span class="hljs-keyword">this</span>.setState(initialForm);
-            }
-        };
-
-        render() {
-            <span class="hljs-keyword">return</span> (
-                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">WrappedComponent</span>
-                    {<span class="hljs-attr">...this.props</span>}
-                    <span class="hljs-attr">form</span>=<span class="hljs-string">{this.state}</span>
-                    <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
-                    <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{this.handleSubmit}</span>
-                /&gt;</span>
-            );
+    <span class="hljs-comment">// &#xC694;&#xCCAD;&#xC744; &#xC2DC;&#xC791;&#xD569;&#xB2C8;&#xB2E4;</span>
+    <span class="hljs-comment">// &#xC5EC;&#xAE30;&#xC11C; &#xB9CC;&#xB4E0; promise &#xB97C; return &#xD574;&#xC918;&#xC57C;, &#xB098;&#xC911;&#xC5D0; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xC5D0;&#xC11C; &#xD638;&#xCD9C; &#xD560; &#xB54C; getPost().then(...) &#xC744; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;</span>
+    <span class="hljs-keyword">return</span> getPostAPI(postId).then(
+        (response) =&gt; {
+            <span class="hljs-comment">// &#xC694;&#xCCAD;&#xC774; &#xC131;&#xACF5;&#xD588;&#xC744;&#xACBD;&#xC6B0;, &#xC11C;&#xBC84; &#xC751;&#xB2F5;&#xB0B4;&#xC6A9;&#xC744; payload &#xB85C; &#xC124;&#xC815;&#xD558;&#xC5EC; GET_POST_SUCCESS &#xC561;&#xC158;&#xC744; &#xB514;&#xC2A4;&#xD328;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.</span>
+            dispatch({
+                type: GET_POST_SUCCESS,
+                payload: response
+            })
         }
-    };
-};
+    ).catch(error =&gt; {
+        <span class="hljs-comment">// &#xC5D0;&#xB7EC;&#xAC00; &#xBC1C;&#xC0DD;&#xD588;&#xC744; &#xACBD;&#xC6B0;, &#xC5D0;&#xB85C; &#xB0B4;&#xC6A9;&#xC744; payload &#xB85C; &#xC124;&#xC815;&#xD558;&#xC5EC; GET_POST_FAILURE &#xC561;&#xC158;&#xC744; &#xB514;&#xC2A4;&#xD328;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.</span>
+        dispatch({
+            type: GET_POST_FAILURE,
+            payload: error
+        });
+        <span class="hljs-comment">// error &#xB97C; throw &#xD558;&#xC5EC;, &#xC774; &#xD568;&#xC218;&#xAC00; &#xC2E4;&#xD589; &#xB41C; &#xB2E4;&#xC74C;&#xC5D0; &#xB2E4;&#xC2DC;&#xD55C;&#xBC88; catch &#xB97C; &#xD560; &#xC218; &#xC788;&#xAC8C; &#xD569;&#xB2C8;&#xB2E4;.</span>
+        <span class="hljs-keyword">throw</span>(error);
+    })
 
-export default withForm;
-</span></code></pre>
-<pre><code class="lang-jsx"><span class="hljs-comment">// src/LoginForm.js</span>
-<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
-<span class="hljs-keyword">import</span> withForm <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./withForm&apos;</span>;
+}
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginForm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-    render() {
-        <span class="hljs-keyword">const</span> { username, password } = <span class="hljs-keyword">this</span>.props.form;
-        <span class="hljs-keyword">return</span> (
-            &lt;form className=&quot;LoginForm&quot; onSubmit={this.props.onSubmit}&gt;
-                &lt;input
-                    onChange={this.props.onChange}
-                    value={username}
-                    name=&quot;username&quot;
-                    placeholder=&quot;&#xACC4;&#xC815;&quot;
-                /&gt;
-                &lt;input
-                    onChange={this.props.onChange}
-                    value={password}
-                    name=&quot;password&quot;
-                    type=&quot;password&quot;
-                    placeholder=&quot;&#xBE44;&#xBC00;&#xBC88;&#xD638;&quot;
-                /&gt;
-                &lt;button&gt;&#xB85C;&#xADF8;&#xC778;&lt;/button&gt;
-            &lt;/form&gt;
-        );
+<span class="hljs-keyword">const</span> initialState = {
+    pending: <span class="hljs-literal">false</span>,
+    error: <span class="hljs-literal">false</span>,
+    data: {
+        title: <span class="hljs-string">&apos;&apos;</span>,
+        body: <span class="hljs-string">&apos;&apos;</span>
     }
 }
 
-export default withForm({ username: &apos;&apos;, password: &apos;&apos; }, true)(LoginForm);
-</code></pre>
-<pre><code class="lang-jsx"><span class="hljs-comment">// src/BlogPostForm.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> handleActions({
+    [GET_POST_PENDING]: (state, action) =&gt; {
+        <span class="hljs-keyword">return</span> {
+            ...state,
+            pending: <span class="hljs-literal">true</span>,
+            error: <span class="hljs-literal">false</span>
+        };
+    },
+    [GET_POST_SUCCESS]: (state, action) =&gt; {
+        <span class="hljs-keyword">const</span> { title, body } = action.payload.data;
 
-<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
-<span class="hljs-keyword">import</span> withForm <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./withForm&apos;</span>;
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BlogPostForm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-    render() {
-        <span class="hljs-keyword">const</span> { title, content, tags } = <span class="hljs-keyword">this</span>.props.form;
-        <span class="hljs-keyword">return</span> (
-            &lt;form className=&quot;BlogPostForm&quot; onSubmit={this.props.onSubmit}&gt;
-                &lt;input
-                    value={title}
-                    onChange={this.props.onChange}
-                    name=&quot;title&quot;
-                    placeholder=&quot;&#xC81C;&#xBAA9;&quot;
-                /&gt;
-                &lt;textarea
-                    value={content}
-                    onChange={this.props.onChange}
-                    name=&quot;content&quot;
-                    placeholder=&quot;&#xB0B4;&#xC6A9;&quot;
-                /&gt;
-                &lt;input
-                    value={tags}
-                    onChange={this.props.onChange}
-                    name=&quot;tags&quot;
-                    placeholder=&quot;&#xD0DC;&#xADF8;&quot;
-                /&gt;
-                &lt;button&gt;&#xC791;&#xC131;&lt;/button&gt;
-            &lt;/form&gt;
-        );
+        <span class="hljs-keyword">return</span> {
+            ...state,
+            pending: <span class="hljs-literal">false</span>,
+            data: {
+                title, body
+            }
+        };
+    },
+    [GET_POST_FAILURE]: (state, action) =&gt; {
+        <span class="hljs-keyword">return</span> {
+            ...state,
+            pending: <span class="hljs-literal">false</span>,
+            error: <span class="hljs-literal">true</span>
+        }
     }
-}
-
-export default withForm({ title: &apos;&apos;, content: &apos;&apos;, tags: &apos;&apos; }, true)(
-    BlogPostForm
-);
+}, initialState);
 </code></pre>
 
                                 
@@ -483,14 +446,10 @@ export default withForm({ title: &apos;&apos;, content: &apos;&apos;, tags: &apo
 
             
                 
-                <a href="hoc.html" class="navigation navigation-prev " aria-label="Previous page: HOC 연습1">
+                <a href="redux-c644-c131-bcf8.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: redux 완성본">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../newsviewer-d504-b85c-c81d-d2b8-react-router.html" class="navigation navigation-next " aria-label="Next page: news_viewer 프로젝트 (react-router)">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -499,7 +458,7 @@ export default withForm({ title: &apos;&apos;, content: &apos;&apos;, tags: &apo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"HOC 연습2","level":"4.2","depth":1,"next":{"title":"news_viewer 프로젝트 (react-router)","level":"4.3","depth":1,"path":"newsviewer-d504-b85c-c81d-d2b8-react-router.md","ref":"newsviewer-d504-b85c-c81d-d2b8-react-router.md","articles":[]},"previous":{"title":"HOC 연습1","level":"4.1","depth":1,"path":"4ac15/hoc.md","ref":"4ac15/hoc.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4ac15/hoc-c5f0-c2b5-2.md","mtime":"2019-07-06T05:26:50.030Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-12T18:55:51.367Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"redux thunk","level":"5.2","depth":1,"previous":{"title":"redux 완성본","level":"5.1","depth":1,"path":"5ac15/redux-c644-c131-bcf8.md","ref":"5ac15/redux-c644-c131-bcf8.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5ac15/redux-advanced.md","mtime":"2019-07-12T17:27:12.882Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-12T18:55:51.367Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
