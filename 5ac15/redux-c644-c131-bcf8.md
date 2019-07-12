@@ -17,15 +17,15 @@ import rootReducer from './store/modules';
 import { Provider } from 'react-redux';
 
 const devTools =
-	window.__REDUX_DEVTOOLS_EXTENSION__ &&
-	window.__REDUX_DEVTOOLS_EXTENSION__();
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(rootReducer, devTools);
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById('root')
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
 );
 
 serviceWorker.unregister();
@@ -45,30 +45,30 @@ export const increment = () => ({ type: INCREMENT });
 export const decrement = () => ({ type: DECREMENT });
 
 const initialState = {
-	color: 'red',
-	number: 0
+    color: 'red',
+    number: 0
 };
 
 export default function counter(state = initialState, action) {
-	switch (action.type) {
-		case CHANGE_COLOR:
-			return {
-				...state,
-				color: action.color
-			};
-		case INCREMENT:
-			return {
-				...state,
-				number: state.number + 1
-			};
-		case DECREMENT:
-			return {
-				...state,
-				number: state.number - 1
-			};
-		default:
-			return state;
-	}
+    switch (action.type) {
+        case CHANGE_COLOR:
+            return {
+                ...state,
+                color: action.color
+            };
+        case INCREMENT:
+            return {
+                ...state,
+                number: state.number + 1
+            };
+        case DECREMENT:
+            return {
+                ...state,
+                number: state.number - 1
+            };
+        default:
+            return state;
+    }
 }
 ```
 
@@ -88,41 +88,41 @@ export const enter = createAction(ENTER, id => id);
 export const leave = createAction(LEAVE, id => id);
 
 const initialState = {
-	input: '',
-	list: []
+    input: '',
+    list: []
 };
 
 export default handleActions(
-	{
-		[CHANGE_INPUT]: (state, action) => ({
-			...state,
-			input: action.payload
-		}),
+    {
+        [CHANGE_INPUT]: (state, action) => ({
+            ...state,
+            input: action.payload
+        }),
 
-		[CREATE]: (state, action) => ({
-			...state,
-			list: state.list.concat({
-				id: action.payload.id,
-				name: action.payload.name,
-				entered: false
-			})
-		}),
+        [CREATE]: (state, action) => ({
+            ...state,
+            list: state.list.concat({
+                id: action.payload.id,
+                name: action.payload.name,
+                entered: false
+            })
+        }),
 
-		[ENTER]: (state, action) => ({
-			...state,
-			list: state.list.map(item =>
-				item.id === action.payload
-					? { ...item, entered: !item.entered }
-					: item
-			)
-		}),
+        [ENTER]: (state, action) => ({
+            ...state,
+            list: state.list.map(item =>
+                item.id === action.payload
+                    ? { ...item, entered: !item.entered }
+                    : item
+            )
+        }),
 
-		[LEAVE]: (state, action) => ({
-			...state,
-			list: state.list.filter(item => item.id !== action.payload)
-		})
-	},
-	initialState
+        [LEAVE]: (state, action) => ({
+            ...state,
+            list: state.list.filter(item => item.id !== action.payload)
+        })
+    },
+    initialState
 );
 ```
 
@@ -136,8 +136,8 @@ import counter from './counter';
 import waiting from './waiting';
 
 export default combineReducers({
-	counter,
-	waiting
+    counter,
+    waiting
 });
 ```
 
@@ -151,24 +151,24 @@ import Palette from '../components/Palette';
 import { changeColor } from '../store/modules/counter';
 
 class PaletteContainer extends Component {
-	render() {
-		const { color, changeColor } = this.props;
+    render() {
+        const { color, changeColor } = this.props;
 
-		return <Palette selected={color} onSelect={changeColor} />;
-	}
+        return <Palette selected={color} onSelect={changeColor} />;
+    }
 }
 
 const mapStateToProps = state => ({
-	color: state.counter.color
+    color: state.counter.color
 });
 
 const mapDispatchToProps = dispatch => ({
-	changeColor: color => dispatch(changeColor(color))
+    changeColor: color => dispatch(changeColor(color))
 });
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(PaletteContainer);
 ```
 
@@ -180,31 +180,31 @@ import './Palette.css';
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
 const PaletteItem = ({ color, active, onClick }) => {
-	return (
-		<div
-			className={`PaletteItem ${active ? 'active' : ''}`}
-			style={{ backgroundColor: color }}
-			onClick={onClick}
-		/>
-	);
+    return (
+        <div
+            className={`PaletteItem ${active ? 'active' : ''}`}
+            style={{ backgroundColor: color }}
+            onClick={onClick}
+        />
+    );
 };
 
 const Palette = ({ selected, onSelect }) => {
-	return (
-		<div className="Palette">
-			<h2>Color Palette</h2>
-			<div className="colors">
-				{colors.map(color => (
-					<PaletteItem
-						color={color}
-						key={color}
-						active={selected === color}
-						onClick={() => onSelect(color)}
-					/>
-				))}
-			</div>
-		</div>
-	);
+    return (
+        <div className="Palette">
+            <h2>Color Palette</h2>
+            <div className="colors">
+                {colors.map(color => (
+                    <PaletteItem
+                        color={color}
+                        key={color}
+                        active={selected === color}
+                        onClick={() => onSelect(color)}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 };
 
 export default Palette;
@@ -219,33 +219,33 @@ import Counter from '../components/Counter';
 import { increment, decrement } from '../store/modules/counter';
 
 class CounterContainer extends Component {
-	render() {
-		const { color, number, increment, decrement } = this.props;
+    render() {
+        const { color, number, increment, decrement } = this.props;
 
-		return (
-			<Counter
-				value={number}
-				color={color}
-				onIncrement={increment}
-				onDecrement={decrement}
-			/>
-		);
-	}
+        return (
+            <Counter
+                value={number}
+                color={color}
+                onIncrement={increment}
+                onDecrement={decrement}
+            />
+        );
+    }
 }
 
 const mapStateToProps = state => ({
-	color: state.counter.color,
-	number: state.counter.number
+    color: state.counter.color,
+    number: state.counter.number
 });
 
 const mapDispatchToProps = dispatch => ({
-	increment: () => dispatch(increment()),
-	decrement: () => dispatch(decrement())
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement())
 });
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(CounterContainer);
 ```
 
@@ -255,13 +255,13 @@ import React from 'react';
 import './Counter.css';
 
 const Counter = ({ value, color, onIncrement, onDecrement }) => {
-	return (
-		<div className="Counter">
-			<h1 style={{ color }}>{value}</h1>
-			<button onClick={onIncrement}>+</button>
-			<button onClick={onDecrement}>-</button>
-		</div>
-	);
+    return (
+        <div className="Counter">
+            <h1 style={{ color }}>{value}</h1>
+            <button onClick={onIncrement}>+</button>
+            <button onClick={onDecrement}>-</button>
+        </div>
+    );
 };
 
 export default Counter;
@@ -276,31 +276,31 @@ import { bindActionCreators } from 'redux';
 import * as waitingActions from '../store/modules/waiting';
 
 class WaitingListContainer extends Component {
-	render() {
-		const { input, list, waitingActions } = this.props;
+    render() {
+        const { input, list, waitingActions } = this.props;
 
-		return (
-			<WaitingList
-				waitingList={list}
-				input={input}
-				waitingActions={waitingActions}
-			/>
-		);
-	}
+        return (
+            <WaitingList
+                waitingList={list}
+                input={input}
+                waitingActions={waitingActions}
+            />
+        );
+    }
 }
 
 const mapStateToProps = state => ({
-	input: state.waiting.input,
-	list: state.waiting.list
+    input: state.waiting.input,
+    list: state.waiting.list
 });
 
 const mapDispatchToProps = dispatch => ({
-	waitingActions: bindActionCreators(waitingActions, dispatch)
+    waitingActions: bindActionCreators(waitingActions, dispatch)
 });
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(WaitingListContainer);
 ```
 
@@ -310,47 +310,47 @@ import React from 'react';
 import './WaitingList.css';
 
 const WaitingItem = ({ id, text, entered, onEnter, onLeave }) => {
-	return (
-		<li>
-			<div className={`text ${entered ? 'entered' : ''}`}>{text}</div>
-			<div className="buttons">
-				<button onClick={() => onEnter(id)}>enter</button>
-				<button onClick={() => onLeave(id)}>leave</button>
-			</div>
-		</li>
-	);
+    return (
+        <li>
+            <div className={`text ${entered ? 'entered' : ''}`}>{text}</div>
+            <div className="buttons">
+                <button onClick={() => onEnter(id)}>enter</button>
+                <button onClick={() => onLeave(id)}>leave</button>
+            </div>
+        </li>
+    );
 };
 
 const WaitingList = ({ input, waitingList, waitingActions }) => {
-	return (
-		<div className="WaitingList">
-			<h2>WaitingList</h2>
-			<form
-				onSubmit={e => {
-					e.preventDefault();
-					waitingActions.create(input);
-					waitingActions.changeInput('');
-				}}
-			>
-				<input
-					value={input}
-					onChange={e => waitingActions.changeInput(e.target.value)}
-				/>
-				<button>go</button>
-			</form>
-			<ul>
-				{waitingList.map(item => (
-					<WaitingItem
-						key={item.id}
-						id={item.id}
-						text={item.name}
-						onEnter={waitingActions.enter}
-						onLeave={waitingActions.leave}
-					/>
-				))}
-			</ul>
-		</div>
-	);
+    return (
+        <div className="WaitingList">
+            <h2>WaitingList</h2>
+            <form
+                onSubmit={e => {
+                    e.preventDefault();
+                    waitingActions.create(input);
+                    waitingActions.changeInput('');
+                }}
+            >
+                <input
+                    value={input}
+                    onChange={e => waitingActions.changeInput(e.target.value)}
+                />
+                <button>go</button>
+            </form>
+            <ul>
+                {waitingList.map(item => (
+                    <WaitingItem
+                        key={item.id}
+                        id={item.id}
+                        text={item.name}
+                        onEnter={waitingActions.enter}
+                        onLeave={waitingActions.leave}
+                    />
+                ))}
+            </ul>
+        </div>
+    );
 };
 
 export default WaitingList;
@@ -368,19 +368,18 @@ import CounterContainer from './containers/CounterContainer';
 import WaitingListContainer from './containers/WaitingListContainer';
 
 class App extends Component {
-	render() {
-		return (
-			<div className="App">
-				<PaletteContainer />
-				<CounterContainer />
-				<WaitingListContainer />
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div className="App">
+                <PaletteContainer />
+                <CounterContainer />
+                <WaitingListContainer />
+            </div>
+        );
+    }
 }
 
 export default App;
-
 ```
 
 
