@@ -22,3 +22,7 @@
 * [HOC 연습2](4ac15/hoc-c5f0-c2b5-2.md)
 * [news\_viewer 프로젝트 \(react-router\)](newsviewer-d504-b85c-c81d-d2b8-react-router.md)
 
+## 5강
+
+* [redux 완성본](5ac15/redux-c644-c131-bcf8.md)
+
