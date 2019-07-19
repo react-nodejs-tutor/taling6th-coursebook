@@ -1,4 +1,12 @@
-더 자세한 내용은 [https://typescript-kr.github.io/](https://typescript-kr.github.io/) 를 참고해주세요.
+도움이 될 만한 문서 [https://typescript-kr.github.io/](https://typescript-kr.github.io/) 
+
+\(하지만, 굳이 기초부터 하나하나 살펴보지 않아도 직접 사용해보면서 기본적인 사용법은 금방 터득할 수 있습니다\)
+
+**ts를 적용한 프로젝트를 만들때는 --typescript 플래그를 붙여서 생성합니다.**
+
+```terminal
+yarn create react-app project-name --typescript
+```
 
 ## **React Typescript**
 
