@@ -1,4 +1,4 @@
-도움이 될 만한 문서 [https://typescript-kr.github.io/](https://typescript-kr.github.io/) 
+도움이 될 만한 문서 [https://typescript-kr.github.io/](https://typescript-kr.github.io/)
 
 \(하지만, 굳이 기초부터 하나하나 살펴보지 않아도 직접 사용해보면서 기본적인 사용법은 금방 터득할 수 있습니다\)
 
@@ -7,6 +7,10 @@
 ```terminal
 yarn create react-app project-name --typescript
 ```
+
+**기존 CRA프로젝트에 타입스크립트를 적용하려면?**
+
+[https://facebook.github.io/create-react-app/docs/adding-typescript](https://facebook.github.io/create-react-app/docs/adding-typescript)
 
 ## **React Typescript**
 
