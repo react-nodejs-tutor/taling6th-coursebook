@@ -12,6 +12,10 @@ yarn create react-app project-name --typescript
 
 [https://facebook.github.io/create-react-app/docs/adding-typescript](https://facebook.github.io/create-react-app/docs/adding-typescript)
 
+=&gt; .jsx확장자를 모두 .tsx로 변경하고 서버 재시작 
+
+=&gt; tsconfig파일 자동생성
+
 ## **React Typescript**
 
 let., const사용
