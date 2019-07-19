@@ -27,3 +27,7 @@
 * [redux 완성본](5ac15/redux-c644-c131-bcf8.md)
 * [redux thunk](5ac15/redux-advanced.md)
 
+## 종강
+
+* [typescript](c885-ac15/typescript.md)
+
