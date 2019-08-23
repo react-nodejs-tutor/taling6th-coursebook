@@ -7,6 +7,7 @@
 * [rd](asd.md)
 * [rm](rm.md)
 * [ax-th](thuhk.md)
+* [promise](promise.md)
 
 ## 1강
 
