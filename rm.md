@@ -1,4 +1,7 @@
 ```jsx
+// clone하면 input입력하면 list에 추가되는거까지 만들어져있음.
+// 여기서부터 시작.
+
 //src/middleware.js
 
 const middleware = store => next => action => {
@@ -40,6 +43,10 @@ serviceWorker.unregister();
 ```
 
 ```jsx
+// 여기로 돌아와서 설명
+
+// middleware 가 이렇게 생겼기 때문에, thunk에서 dispatch, getState를 비구조화할당해서 받아올 수 있는것임
+
 const middleware = store => next => action => {
     console.log(store.getState());
 
@@ -59,7 +66,7 @@ const middleware = store => next => action => {
 export default middleware;
 ```
 
-insert를 비동기로 만들어보자.
+thunk를 이용해서 원래 있던 insert를 비동기로 바꿔보자.
 
 insertAsnyc는 호출하면 함수랑 리턴하는 함수이다.
 
@@ -77,7 +84,7 @@ let id = 1;
 export const changeInput = createAction(CHANGE_INPUT, text => text);
 export const insert = createAction(INSERT, text => ({ text, id: id++ }));
 
-// 여기
+// 여기!!!!!!!!!!!!!!!!!!!!!!!!!!
 export const insertAsync = input => dispatch => {
     setTimeout(() => {
         dispatch(insert(input));
@@ -132,6 +139,8 @@ class App extends Component {
         this.props.FormActions.changeInput(value);
     };
 
+
+// 여기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     handleSubmit = e => {
         e.preventDefault();
 
