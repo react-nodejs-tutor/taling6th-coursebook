@@ -18,53 +18,53 @@ const rejected = createAction(REJECTED, error => error);
 
 //////////////////////// callNewsAPI, getNews를 나중에 ///////////////////
 const callNewsAPI = category => {
-	return axios.get(
-		`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=61120652e560407b8e961993f5ebaa8f`
-	);
+    return axios.get(
+        `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=61120652e560407b8e961993f5ebaa8f`
+    );
 };
 
 
 // return, throw처음에 빼줘도됨
 export const getNews = category => dispatch => {
-	dispatch(pending());
+    dispatch(pending());
 
-	return callNewsAPI(category)
-		.then(data => {
-			dispatch(resolved(data));
-		})
-		.catch(error => {
-			dispatch(rejected(error));
-			throw error;
-		});
+    return callNewsAPI(category)
+        .then(data => {
+            dispatch(resolved(data));
+        })
+        .catch(error => {
+            dispatch(rejected(error));
+            throw error;
+        });
 };
 //////////////////////// 나중에 ///////////////////
 
 
 const initialState = {
-	pending: false,
-	data: null,
-	error: null
+    pending: false,
+    data: null,
+    error: null
 };
 
 export default handleActions(
-	{
-		[PENDING]: (state, action) => ({
-			...state,
-			pending: true,
-			error: false
-		}),
-		[RESOLVED]: (state, action) => ({
-			...state,
-			data: action.payload,
-			pending: false
-		}),
-		[REJECTED]: (state, action) => ({
-			...state,
-			pending: false,
-			error: action.payload
-		})
-	},
-	initialState
+    {
+        [PENDING]: (state, action) => ({
+            ...state,
+            pending: true,
+            error: false
+        }),
+        [RESOLVED]: (state, action) => ({
+            ...state,
+            data: action.payload,
+            pending: false
+        }),
+        [REJECTED]: (state, action) => ({
+            ...state,
+            pending: false,
+            error: action.payload
+        })
+    },
+    initialState
 );
 ```
 
@@ -84,64 +84,63 @@ import * as postActions from './store/modules/post';
 import { bindActionCreators } from 'redux';
 
 class App extends Component {
-	handleChange = e => {
-		const { value } = e.target;
-		this.props.FormActions.changeInput(value);
-	};
+    handleChange = e => {
+        const { value } = e.target;
+        this.props.FormActions.changeInput(value);
+    };
 
         /////////// 3번!!!!!!!!!!!!!!!!!!!!!!!!!
-	handleSubmit = e => {
-		e.preventDefault();
+    handleSubmit = e => {
+        e.preventDefault();
 
-		const { PostActions, FormActions, input } = this.props;
+        const { PostActions, FormActions, input } = this.props;
 
-		PostActions.getNews(input);
-		FormActions.changeInput('');
-	};
+        PostActions.getNews(input);
+        FormActions.changeInput('');
+    };
 
-	render() {
-	//4번 !!!!!!!!!!!!!!!!!!!!!!!
-		const { input, pending, data, error } = this.props;
+    render() {
+    //4번 !!!!!!!!!!!!!!!!!!!!!!!
+        const { input, pending, data, error } = this.props;
 
-		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
-					<input value={input} onChange={this.handleChange} />
-					<button>입력</button>
-				</form>
-				//5번 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				{pending && <div>loading...</div>}
-				{data && (
-					<ul>
-						{data.data.articles.map(item => (
-							<li key={item.url}>
-								<h1>{item.title}</h1>
-								<p>{item.description}</p>
-							</li>
-						))}
-					</ul>
-				)}
-				{error && <h1>{error}</h1>}
-			</div>
-		);
-	}
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <input value={input} onChange={this.handleChange} />
+                    <button>입력</button>
+                </form>
+                //5번 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                {pending && <div>loading...</div>}
+                {data && (
+                    <ul>
+                        {data.data.articles.map(item => (
+                            <li key={item.url}>
+                                <h1>{item.title}</h1>
+                                <p>{item.description}</p>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                {error && <h1>{error}</h1>}
+            </div>
+        );
+    }
 }
 
 //2번 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 export default connect(
-	state => ({
-		input: state.form.input,
-		list: state.form.list,
-		pending: state.post.pending,
-		data: state.post.data,
-		error: state.post.error
-	}),
-	dispatch => ({
-		FormActions: bindActionCreators(formActions, dispatch),
-		PostActions: bindActionCreators(postActions, dispatch)
-	})
+    state => ({
+        input: state.form.input,
+        list: state.form.list,
+        pending: state.post.pending,
+        data: state.post.data,
+        error: state.post.error
+    }),
+    dispatch => ({
+        FormActions: bindActionCreators(formActions, dispatch),
+        PostActions: bindActionCreators(postActions, dispatch)
+    })
 )(App);
-
 ```
 
 
