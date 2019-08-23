@@ -79,31 +79,31 @@ export const insert = createAction(INSERT, text => ({ text, id: id++ }));
 
 // 여기
 export const insertAsync = input => dispatch => {
-	setTimeout(() => {
-		dispatch(insert(input));
-	}, 1000);
+    setTimeout(() => {
+        dispatch(insert(input));
+    }, 1000);
 };
 
 const initialState = {
-	input: '',
-	list: []
+    input: '',
+    list: []
 };
 
 export default handleActions(
-	{
-		[CHANGE_INPUT]: (state, action) => ({
-			...state,
-			input: action.payload
-		}),
-		[INSERT]: (state, action) => ({
-			...state,
-			list: state.list.concat({
-				id: action.payload.id,
-				text: action.payload.text
-			})
-		})
-	},
-	initialState
+    {
+        [CHANGE_INPUT]: (state, action) => ({
+            ...state,
+            input: action.payload
+        }),
+        [INSERT]: (state, action) => ({
+            ...state,
+            list: state.list.concat({
+                id: action.payload.id,
+                text: action.payload.text
+            })
+        })
+    },
+    initialState
 );
 ```
 
@@ -127,52 +127,47 @@ import * as formActions from './store/modules/form';
 import { bindActionCreators } from 'redux';
 
 class App extends Component {
-	handleChange = e => {
-		const { value } = e.target;
-		this.props.FormActions.changeInput(value);
-	};
+    handleChange = e => {
+        const { value } = e.target;
+        this.props.FormActions.changeInput(value);
+    };
 
-	handleSubmit = e => {
-		e.preventDefault();
+    handleSubmit = e => {
+        e.preventDefault();
 
-		const { FormActions, input } = this.props;
+        const { FormActions, input } = this.props;
 
-		FormActions.insertAsync(input);
-		FormActions.changeInput('');
-	};
+        FormActions.insertAsync(input);
+        FormActions.changeInput('');
+    };
 
-	render() {
-		const { input, list } = this.props;
+    render() {
+        const { input, list } = this.props;
 
-		return (
-			<div>
-				<form action="">
-					<input value={input} onChange={this.handleChange} />
-					<button onClick={this.handleSubmit}>입력</button>
-				</form>
-				{list.map(item => {
-					return <div key={item.id}>{item.text}</div>;
-				})}
-			</div>
-		);
-	}
+        return (
+            <div>
+                <form action="">
+                    <input value={input} onChange={this.handleChange} />
+                    <button onClick={this.handleSubmit}>입력</button>
+                </form>
+                {list.map(item => {
+                    return <div key={item.id}>{item.text}</div>;
+                })}
+            </div>
+        );
+    }
 }
 
 export default connect(
-	({ form: { input, list } }) => ({
-		input,
-		list
-	}),
-	dispatch => ({
-		FormActions: bindActionCreators(formActions, dispatch)
-	})
+    ({ form: { input, list } }) => ({
+        input,
+        list
+    }),
+    dispatch => ({
+        FormActions: bindActionCreators(formActions, dispatch)
+    })
 )(App);
-
 ```
 
-그다음은 실사용측면에서의 axios
-
-
-
-
+그다음은 실사용측면에서의 axios 다음 chapter
 
