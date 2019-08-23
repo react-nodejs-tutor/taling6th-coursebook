@@ -5,6 +5,7 @@
 * [작업환경설정](README.md)
 * [asdf](asdf.md)
 * [rd](asd.md)
+* [rm](rm.md)
 
 ## 1강
 
