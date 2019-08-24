@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>asdf · GitBook</title>
+        <title>saga · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="asd.html" />
+    <link rel="next" href="hooks.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="promise.html" />
     
 
     </head>
@@ -104,7 +104,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="asdf.html">
+        <li class="chapter " data-level="1.2" data-path="asdf.html">
             
                 <a href="asdf.html">
             
@@ -169,7 +169,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="saga.html">
+        <li class="chapter active" data-level="1.7" data-path="saga.html">
             
                 <a href="saga.html">
             
@@ -455,7 +455,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >asdf</a>
+        <a href="." >saga</a>
     </h1>
 </div>
 
@@ -470,134 +470,152 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <pre><code class="lang-jsx"><span class="hljs-comment">// components/Button/Button.js</span>
-<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;./Button.scss&apos;</span>;
-
-<span class="hljs-keyword">const</span> Button = ({ text }) =&gt; {
-    <span class="hljs-keyword">return</span> (
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>
-            {text}
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-    );
-};
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Button;
-
-<span class="hljs-comment">// components/Button/Button.scss</span>
-
-.button {
-    width: <span class="hljs-number">150</span>px;
-    height: <span class="hljs-number">100</span>px;
-    font-size: <span class="hljs-number">20</span>px;
-    background: material-color(<span class="hljs-string">&apos;blue-grey&apos;</span>, <span class="hljs-string">&apos;600&apos;</span>);
-    @include material-shadow(<span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+                                <p>generator &#xBB38;&#xBC95;&#xBD80;&#xD130; &#xC54C;&#xC544;&#xC57C;&#xD568;</p>
+<pre><code class="lang-jsx"><span class="hljs-function"><span class="hljs-keyword">function</span> *<span class="hljs-title">test</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">yield</span> <span class="hljs-string">&apos;2&apos;</span>;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);
+    <span class="hljs-keyword">yield</span> <span class="hljs-string">&apos;4&apos;</span>;
 }
+
+<span class="hljs-keyword">const</span> b = test()
+b.next()
+b.next()
+b.next()
+
+<span class="hljs-keyword">const</span> c = next()
+c.next().value
+c.next().value
+c
+c.next().value
+c
 </code></pre>
-<pre><code class="lang-jsx"><span class="hljs-comment">// components/App.js</span>
+<p>&#xC2DC;&#xC791;</p>
+<pre><code class="lang-jsx"><span class="hljs-comment">// index.js</span>
 
-<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
-<span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Button/Button&apos;</span>;
+<span class="hljs-comment">// &#xC774;&#xB807;&#xAC8C; &#xC0AC;&#xAC00;&#xB97C; &#xC801;&#xC6A9;. &#xB098;&#xC911;&#xC5D0; run&#xC744; &#xD574;&#xC918;&#xC57C;&#xD568;</span>
 
-<span class="hljs-keyword">const</span> App = () =&gt; {
-    <span class="hljs-keyword">return</span> (
-        &lt;div&gt;
-            &lt;Button text=&quot;&#xCD94;&#xAC00;&#xD558;&#xAE30;&quot; /&gt;
-        &lt;/div&gt;
-    );
-};
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-redux&apos;</span>;
+<span class="hljs-keyword">import</span> createSagaMiddleware <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;redux-saga&apos;</span>;
 
-export default App;
+<span class="hljs-keyword">const</span> sagaMiddleware = createSagaMiddleware();
 
-// index.js
-import React from &apos;react&apos;;
-import ReactDOM from &apos;react-dom&apos;;
-import App from &apos;components/App&apos;;
+<span class="hljs-keyword">const</span> store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
-import * as serviceWorker from &apos;./serviceWorker&apos;;
+ReactDOM.render(
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span>,
+    document.getElementById(&apos;root&apos;)
+);
 
-ReactDOM.render(&lt;App /&gt;, document.getElementById(&apos;root&apos;));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-</code></pre>
-<pre><code class="lang-jsx"><span class="hljs-comment">// styles/base/_reset.scss</span>
-* {
-    margin: <span class="hljs-number">0</span>;
-    padding: <span class="hljs-number">0</span>;
-}
+</span></code></pre>
+<pre><code class="lang-jsx"><span class="hljs-comment">// post.js</span>
 
-<span class="hljs-comment">// styles/base/_all.scss</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;reset&apos;</span>;
+<span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;axios&apos;</span>;
+<span class="hljs-keyword">import</span> { call, put, takeEvery } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;redux-saga/effects&apos;</span>;
 
-<span class="hljs-comment">// styles/main.scss</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;base/all&apos;</span>;
+...
 
-<span class="hljs-comment">// src/index.js</span>
+<span class="hljs-comment">// &#xC774;&#xAC78; &#xCD94;&#xAC00;</span>
+<span class="hljs-keyword">const</span> CALL_NEWS = <span class="hljs-string">&apos;post/CALL_NEWS&apos;</span>;
+<span class="hljs-keyword">const</span> PENDING = <span class="hljs-string">&apos;post/PENDING&apos;</span>;
+<span class="hljs-keyword">const</span> RESOLVED = <span class="hljs-string">&apos;post/RESOLVED&apos;</span>;
+<span class="hljs-keyword">const</span> REJECTED = <span class="hljs-string">&apos;post/REJECTED&apos;</span>;
+
+<span class="hljs-comment">// &#xB9C8;&#xCC2C;&#xAC00;&#xC9C0;&#xB85C; &#xC561;&#xC158;&#xC0DD;&#xC131; &#xD568;&#xC218;&#xCD94;&#xAC00;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> callNews = createAction(CALL_NEWS, category =&gt; category);
+<span class="hljs-keyword">const</span> pending = createAction(PENDING);
+<span class="hljs-keyword">const</span> resolved = createAction(RESOLVED, data =&gt; data);
+<span class="hljs-keyword">const</span> rejected = createAction(REJECTED, error =&gt; error);
 
 <span class="hljs-comment">// &#xCD94;&#xAC00;</span>
-<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;styles/main.scss&apos;</span>;
-</code></pre>
-<pre><code class="lang-jsx"><span class="hljs-comment">// styles/lib/_all.scss</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;~include-media/dist/include-media&apos;</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;~sass-material-colors&apos;</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">callNewsSaga</span>(<span class="hljs-params">action</span>) </span>{
+    <span class="hljs-keyword">yield</span> put(pending());
 
-<span class="hljs-comment">// styles/utils.scss</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;lib/all&apos;</span>;
-
-<span class="hljs-comment">// Button.js</span>
-
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;utils.scss&apos;</span>;
-.button {
-    width: <span class="hljs-number">150</span>px;
-    height: <span class="hljs-number">100</span>px;
-    font-size: <span class="hljs-number">20</span>px;
-    background: material-color(<span class="hljs-string">&apos;blue-grey&apos;</span>, <span class="hljs-string">&apos;600&apos;</span>);
-}
-</code></pre>
-<pre><code class="lang-jsx"><span class="hljs-comment">// styles/lib/mixin/_material-shadow.scss</span>
-@mixin material-shadow($z-depth: <span class="hljs-number">1</span>, $strength: <span class="hljs-number">1</span>, $color: black) {
-    @<span class="hljs-keyword">if</span> $z-depth == <span class="hljs-number">1</span> {
-        box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">1</span>px <span class="hljs-number">3</span>px rgba($color, $strength * <span class="hljs-number">0.14</span>), <span class="hljs-number">0</span> <span class="hljs-number">1</span>px <span class="hljs-number">2</span>px rgba($color, $strength * <span class="hljs-number">0.24</span>);
-    }
-    @<span class="hljs-keyword">if</span> $z-depth == <span class="hljs-number">2</span> {
-        box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">3</span>px <span class="hljs-number">6</span>px rgba($color, $strength * <span class="hljs-number">0.16</span>), <span class="hljs-number">0</span> <span class="hljs-number">3</span>px <span class="hljs-number">6</span>px rgba($color, $strength * <span class="hljs-number">0.23</span>);
-    }
-    @<span class="hljs-keyword">if</span> $z-depth == <span class="hljs-number">3</span> {
-        box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">10</span>px <span class="hljs-number">20</span>px rgba($color, $strength * <span class="hljs-number">0.19</span>), <span class="hljs-number">0</span> <span class="hljs-number">6</span>px <span class="hljs-number">6</span>px rgba($color, $strength * <span class="hljs-number">0.23</span>);
-    }
-    @<span class="hljs-keyword">if</span> $z-depth == <span class="hljs-number">4</span> {
-        box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">15</span>px <span class="hljs-number">30</span>px rgba($color, $strength * <span class="hljs-number">0.25</span>),
-            <span class="hljs-number">0</span> <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px rgba($color, $strength * <span class="hljs-number">0.22</span>);
-    }
-    @<span class="hljs-keyword">if</span> $z-depth == <span class="hljs-number">5</span> {
-        box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">20</span>px <span class="hljs-number">40</span>px rgba($color, $strength * <span class="hljs-number">0.3</span>),
-            <span class="hljs-number">0</span> <span class="hljs-number">15</span>px <span class="hljs-number">12</span>px rgba($color, $strength * <span class="hljs-number">0.22</span>);
-    }
-    @<span class="hljs-keyword">if</span> ($z-depth &lt; <span class="hljs-number">1</span>) or ($z-depth &gt; <span class="hljs-number">5</span>) {
-        @warn <span class="hljs-string">&quot;$z-depth must be between 1 and 5&quot;</span>;
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">yield</span> call(callNewsAPI, action.payload);
+        <span class="hljs-keyword">yield</span> put(resolved(response));
+    } <span class="hljs-keyword">catch</span> (e) {
+        <span class="hljs-keyword">yield</span> put(rejected(e));
     }
 }
-<span class="hljs-comment">// styles/lib/mixin/_all.scss</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;material-shadow&apos;</span>;
 
-<span class="hljs-comment">// styles/lib/_all.scss</span>
-
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;mixin/all&apos;</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;~include-media/dist/include-media&apos;</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;~sass-material-colors&apos;</span>;
-</code></pre>
-<pre><code class="lang-jsx"><span class="hljs-comment">// Button.js</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">&apos;utils.scss&apos;</span>;
-.button {
-    width: <span class="hljs-number">150</span>px;
-    height: <span class="hljs-number">100</span>px;
-    font-size: <span class="hljs-number">20</span>px;
-    background: material-color(<span class="hljs-string">&apos;blue-grey&apos;</span>, <span class="hljs-string">&apos;600&apos;</span>);
-    @include material-shadow(<span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+<span class="hljs-comment">// &#xADF8;&#xB9AC;&#xACE0; &#xCABC;&#xADF8;&#xB9C8;&#xB09C; &#xC0AC;&#xAC00;&#xB4E4;&#xC744; &#xD55C;&#xBC88;&#xC5D0; &#xBB36;&#xC5B4;&#xC90C;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">newsSaga</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">yield</span> takeEvery(CALL_NEWS, callNewsSaga);
 }
+
+<span class="hljs-keyword">const</span> initialState = {
+    pending: <span class="hljs-literal">false</span>,
+    data: <span class="hljs-literal">null</span>,
+    error: <span class="hljs-literal">null</span>
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> handleActions(
+    {
+        [PENDING]: (state, action) =&gt; ({
+            ...state,
+            pending: <span class="hljs-literal">true</span>,
+            error: <span class="hljs-literal">false</span>
+        }),
+        [RESOLVED]: (state, action) =&gt; ({
+            ...state,
+            data: action.payload,
+            pending: <span class="hljs-literal">false</span>
+        }),
+        [REJECTED]: (state, action) =&gt; ({
+            ...state,
+            pending: <span class="hljs-literal">false</span>,
+            error: action.payload
+        })
+    },
+    initialState
+);
+</code></pre>
+<pre><code class="lang-jsx"><span class="hljs-comment">//modules/index.js</span>
+
+
+<span class="hljs-keyword">import</span> { combineReducers } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;redux&apos;</span>;
+<span class="hljs-comment">// all&#xC774;&#xB791; subsaga&#xAC00;&#xC838;&#xC640;&#xC11C; rootsaga&#xB85C; &#xBB36;&#xC5B4;&#xC11C; &#xB0B4;&#xBCF4;&#xB0C4;</span>
+<span class="hljs-keyword">import</span> { all } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;redux-saga/effects&apos;</span>;
+<span class="hljs-keyword">import</span> { newsSaga } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./post&apos;</span>;
+<span class="hljs-keyword">import</span> form <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./form&apos;</span>;
+<span class="hljs-keyword">import</span> post <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./post&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">rootSaga</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">yield</span> all([newsSaga()]);
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> combineReducers({
+    form,
+    post
+});
+</code></pre>
+<pre><code class="lang-jsx"><span class="hljs-comment">// index.js</span>
+
+
+<span class="hljs-comment">// rootsaga&#xBD88;&#xB7EC;&#xC11C; run.</span>
+<span class="hljs-keyword">import</span> rootReducer, { rootSaga } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./store/modules&apos;</span>;
+
+<span class="hljs-keyword">const</span> sagaMiddleware = createSagaMiddleware();
+
+<span class="hljs-keyword">const</span> store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(rootSaga);
+</code></pre>
+<pre><code class="lang-jsx"><span class="hljs-comment">// App.js</span>
+
+    handleSubmit = e =&gt; {
+        e.preventDefault();
+
+        <span class="hljs-keyword">const</span> { PostActions, FormActions, input } = <span class="hljs-keyword">this</span>.props;
+
+               <span class="hljs-comment">//&#xC774;&#xAC70;&#xB9CC; &#xBC14;&#xAFD4;&#xC900;&#xB2E4; </span>
+        PostActions.callNews(input);
+        FormActions.changeInput(<span class="hljs-string">&apos;&apos;</span>);
+    };
 </code></pre>
 
                                 
@@ -626,12 +644,12 @@ serviceWorker.unregister();
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 작업환경설정">
+                <a href="promise.html" class="navigation navigation-prev " aria-label="Previous page: promise">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="asd.html" class="navigation navigation-next " aria-label="Next page: rd">
+                <a href="hooks.html" class="navigation navigation-next " aria-label="Next page: hooks">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -642,7 +660,7 @@ serviceWorker.unregister();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"asdf","level":"1.2","depth":1,"next":{"title":"rd","level":"1.3","depth":1,"path":"asd.md","ref":"asd.md","articles":[]},"previous":{"title":"작업환경설정","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"asdf.md","mtime":"2019-08-10T04:01:25.106Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-24T03:58:27.167Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"saga","level":"1.7","depth":1,"next":{"title":"hooks","level":"1.8","depth":1,"path":"hooks.md","ref":"hooks.md","articles":[]},"previous":{"title":"promise","level":"1.6","depth":1,"path":"promise.md","ref":"promise.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"saga.md","mtime":"2019-08-23T16:45:51.155Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-24T03:58:27.167Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
