@@ -17,40 +17,39 @@ export const update = createAction(UPDATE, id => id);
 export const remove = createAction(REMOVE, id => id);
 
 const initialState = {
-	input: '',
-	list: []
+    input: '',
+    list: []
 };
 
 export default handleActions(
-	{
-		[CHANGE_INPUT]: (state, action) => ({
-			...state,
-			input: action.payload
-		}),
-		[INSERT]: (state, action) => ({
-			...state,
-			list: state.list.concat({
-				id: action.payload.id,
-				color: action.payload.color,
-				opacity: 1
-			})
-		}),
-		[UPDATE]: (state, action) => ({
-			...state,
-			list: state.list.map(color => {
-				if (color.id === action.payload) {
-					return { ...color, opacity: color.opacity - 0.1 };
-				} else return color;
-			})
-		}),
-		[REMOVE]: (state, action) => ({
-			...state,
-			list: state.list.filter(color => color.id !== action.payload)
-		})
-	},
-	initialState
+    {
+        [CHANGE_INPUT]: (state, action) => ({
+            ...state,
+            input: action.payload
+        }),
+        [INSERT]: (state, action) => ({
+            ...state,
+            list: state.list.concat({
+                id: action.payload.id,
+                color: action.payload.color,
+                opacity: 1
+            })
+        }),
+        [UPDATE]: (state, action) => ({
+            ...state,
+            list: state.list.map(color => {
+                if (color.id === action.payload) {
+                    return { ...color, opacity: color.opacity - 0.1 };
+                } else return color;
+            })
+        }),
+        [REMOVE]: (state, action) => ({
+            ...state,
+            list: state.list.filter(color => color.id !== action.payload)
+        })
+    },
+    initialState
 );
-
 ```
 
 root Reducer통합
@@ -63,10 +62,9 @@ import counter from './counter';
 import colorList from './colorList';
 
 export default combineReducers({
-	counter,
-	colorList
+    counter,
+    colorList
 });
-
 ```
 
 ```jsx
@@ -83,35 +81,34 @@ import * as counterActions from '../store/modules/counter';
 import { bindActionCreators } from 'redux';
 
 class ColorListContainer extends Component {
-	render() {
-		const { input, list, ColorListActions, CounterActions } = this.props;
+    render() {
+        const { input, list, ColorListActions, CounterActions } = this.props;
 
-		return (
-			<ColorList
-				input={input}
-				list={list}
-				ColorListActions={ColorListActions}
-				CounterActions={CounterActions}
-			/>
-		);
-	}
+        return (
+            <ColorList
+                input={input}
+                list={list}
+                ColorListActions={ColorListActions}
+                CounterActions={CounterActions}
+            />
+        );
+    }
 }
 
 const mapStateToProps = ({ colorList: { input, list } }) => ({
-	input,
-	list
+    input,
+    list
 });
 
 const mapDispatchToProps = dispatch => ({
-	ColorListActions: bindActionCreators(colorListActions, dispatch),
-	CounterActions: bindActionCreators(counterActions, dispatch)
+    ColorListActions: bindActionCreators(colorListActions, dispatch),
+    CounterActions: bindActionCreators(counterActions, dispatch)
 });
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(ColorListContainer);
-
 ```
 
 ```jsx
@@ -122,66 +119,65 @@ import ListItem from './ListItem';
 import './ColorList.css';
 
 class ColorList extends Component {
-	handleChange = e => {
-		const { value } = e.target;
-		const { ColorListActions } = this.props;
-		ColorListActions.changeInput(value);
-	};
+    handleChange = e => {
+        const { value } = e.target;
+        const { ColorListActions } = this.props;
+        ColorListActions.changeInput(value);
+    };
 
-	handleSubmit = e => {
-		e.preventDefault();
-		const { input, ColorListActions, CounterActions } = this.props;
-		ColorListActions.insert(input);
-		CounterActions.changeColor(input);
-		ColorListActions.changeInput('');
-	};
+    handleSubmit = e => {
+        e.preventDefault();
+        const { input, ColorListActions, CounterActions } = this.props;
+        ColorListActions.insert(input);
+        CounterActions.changeColor(input);
+        ColorListActions.changeInput('');
+    };
 
-	handleUpdate = id => {
-		const { ColorListActions } = this.props;
-		ColorListActions.update(id);
-	};
+    handleUpdate = id => {
+        const { ColorListActions } = this.props;
+        ColorListActions.update(id);
+    };
 
-	handleRemove = id => {
-		const { ColorListActions } = this.props;
-		ColorListActions.remove(id);
-	};
+    handleRemove = id => {
+        const { ColorListActions } = this.props;
+        ColorListActions.remove(id);
+    };
 
-	render() {
-		const { list, input } = this.props;
+    render() {
+        const { list, input } = this.props;
 
-		return (
-			<div>
-				<form className="ColorList" onSubmit={this.handleSubmit}>
-					<input
-						placeholder="원하는 색을 입력하세요"
-						value={input}
-						onChange={this.handleChange}
-					/>
-				</form>
-				{list.map(item => {
-					return (
-						<ListItem
-							key={item.id}
-							item={item}
-							style={{
-								backgroundColor: item.color,
-								opacity: item.opacity,
-								width: '50px',
-								height: '50px',
-								float: 'left'
-							}}
-							onUpdate={this.handleUpdate}
-							onRemove={this.handleRemove}
-						/>
-					);
-				})}
-			</div>
-		);
-	}
+        return (
+            <div>
+                <form className="ColorList" onSubmit={this.handleSubmit}>
+                    <input
+                        placeholder="원하는 색을 입력하세요"
+                        value={input}
+                        onChange={this.handleChange}
+                    />
+                </form>
+                {list.map(item => {
+                    return (
+                        <ListItem
+                            key={item.id}
+                            item={item}
+                            style={{
+                                backgroundColor: item.color,
+                                opacity: item.opacity,
+                                width: '50px',
+                                height: '50px',
+                                float: 'left'
+                            }}
+                            onUpdate={this.handleUpdate}
+                            onRemove={this.handleRemove}
+                        />
+                    );
+                })}
+            </div>
+        );
+    }
 }
 
 export default ColorList;
-
 ```
 
 마지막App에서 컨테이너렌더
