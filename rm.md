@@ -20,14 +20,8 @@ export default middleware;
 ```jsx
 // index.js
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './store/modules';
-import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux'
+// 미들웨어 가져와서 applymiddleware에 집어넣음
 import middleware from './middleware';
 
 const store = createStore(rootReducer, applyMiddleware(middleware));

@@ -9,6 +9,8 @@
 * [ax-th](thuhk.md)
 * [promise](promise.md)
 * [saga](saga.md)
+* [hooks](hooks.md)
+* [redux final](redux-final.md)
 
 ## 1강
 
