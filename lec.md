@@ -222,31 +222,31 @@ import React, { useEffect } from 'react';
 import { useForm } from './UseForm';
 
 const App = () => {
-	const [values, setValues] = useForm({
-		email: '',
-		password: '',
-		username: ''
-	});
+    const [values, setValues] = useForm({
+        email: '',
+        password: '',
+        username: ''
+    });
 
-	useEffect(() => {
-		const onMouseMove = e => {
-			console.log(e);
-		};
+    useEffect(() => {
+        const onMouseMove = e => {
+            console.log(e);
+        };
 
-		window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mousemove', onMouseMove);
 
-		return () => {
-			window.removeEventListener('mousemove', onMouseMove);
-		};
-	}, []);
+        return () => {
+            window.removeEventListener('mousemove', onMouseMove);
+        };
+    }, []);
 
-	return (
-		<div>
-			<input name="email" value={values.email} onChange={setValues} />
-			<input name="password" value={values.password} onChange={setValues} />
-			<input name="username" value={values.username} onChange={setValues} />
-		</div>
-	);
+    return (
+        <div>
+            <input name="email" value={values.email} onChange={setValues} />
+            <input name="password" value={values.password} onChange={setValues} />
+            <input name="username" value={values.username} onChange={setValues} />
+        </div>
+    );
 };
 
 export default App;
@@ -261,28 +261,28 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export const useAxios = url => {
-	const [state, setState] = useState({ data: null, loading: false });
+    const [state, setState] = useState({ data: null, loading: false });
 
-	useEffect(() => {
-		setState(currentState => ({
-			...currentState,
-			loading: true
-		}));
+    useEffect(() => {
+        setState(currentState => ({
+            ...currentState,
+            loading: true
+        }));
 
-		axios.get(url).then(response => {
-			setState(currentState => ({
-				...currentState,
-				data: response.data.body
-			}));
+        axios.get(url).then(response => {
+            setState(currentState => ({
+                ...currentState,
+                data: response.data.body
+            }));
 
-			setState(currentState => ({
-				...currentState,
-				loading: false
-			}));
-		});
-	}, [url]);
+            setState(currentState => ({
+                ...currentState,
+                loading: false
+            }));
+        });
+    }, [url]);
 
-	return state;
+    return state;
 };
 ```
 
@@ -295,23 +295,22 @@ import React, { useState } from 'react';
 import { useAxios } from './useAxios';
 
 const App = () => {
-	const [count, setCount] = useState(1);
-	const { data, loading } = useAxios(
-		`https://jsonplaceholder.typicode.com/posts/${count}`
-	);
-	console.log(loading);
+    const [count, setCount] = useState(1);
+    const { data, loading } = useAxios(
+        `https://jsonplaceholder.typicode.com/posts/${count}`
+    );
+    console.log(loading);
 
-	return (
-		<div>
-			<div>{loading ? 'loading..' : data}</div>
-			<hr />
-			<button onClick={() => setCount(count + 1)}>click</button>
-		</div>
-	);
+    return (
+        <div>
+            <div>{loading ? 'loading..' : data}</div>
+            <hr />
+            <button onClick={() => setCount(count + 1)}>click</button>
+        </div>
+    );
 };
 
 export default App;
-
 ```
 
 localStorage이용해서 state저장하기
@@ -323,23 +322,23 @@ import React, { useState, useEffect } from 'react';
 import { useAxios } from './useAxios';
 
 const App = () => {
-	const [count, setCount] = useState(() => localStorage.getItem('count') || 1);
-	const { data, loading } = useAxios(
-		`https://jsonplaceholder.typicode.com/posts/${count}`
-	);
+    const [count, setCount] = useState(() => localStorage.getItem('count') || 1);
+    const { data, loading } = useAxios(
+        `https://jsonplaceholder.typicode.com/posts/${count}`
+    );
 
-	useEffect(() => {
-		localStorage.setItem('count', count);
-	}, [count]);
+    useEffect(() => {
+        localStorage.setItem('count', count);
+    }, [count]);
 
-	return (
-		<div>
-			<div>{loading ? 'loading..' : data}</div>
-			<p>count: {count}</p>
-			<button onClick={() => setCount(count + 1)}>click</button>
-			<hr />
-		</div>
-	);
+    return (
+        <div>
+            <div>{loading ? 'loading..' : data}</div>
+            <p>count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>click</button>
+            <hr />
+        </div>
+    );
 };
 
 export default App;
@@ -353,56 +352,55 @@ import { useAxios } from './useAxios';
 import { useForm } from './useForm';
 
 const App = () => {
-	const [values, setValues] = useForm({
-		email: '',
-		username: '',
-		password: ''
-	});
+    const [values, setValues] = useForm({
+        email: '',
+        username: '',
+        password: ''
+    });
 
-	const [count, setCount] = useState(() =>
-		JSON.parse(localStorage.getItem('count') || 1)
-	);
+    const [count, setCount] = useState(() =>
+        JSON.parse(localStorage.getItem('count') || 1)
+    );
 
-	const { data, loading } = useAxios(
-		`https://jsonplaceholder.typicode.com/posts/${count}`
-	);
+    const { data, loading } = useAxios(
+        `https://jsonplaceholder.typicode.com/posts/${count}`
+    );
 
-	const inputRef = useRef(null);
-	const isInitialMount = useRef(true);
+    const inputRef = useRef(null);
+    const isInitialMount = useRef(true);
 
-	useEffect(() => {
-		localStorage.setItem('count', JSON.stringify(count));
-	}, [count]);
+    useEffect(() => {
+        localStorage.setItem('count', JSON.stringify(count));
+    }, [count]);
 
-	useEffect(() => {
-		if (isInitialMount.current) {
-			isInitialMount.current = false;
-		} else {
-			console.log('hello');
-		}
-	});
+    useEffect(() => {
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+        } else {
+            console.log('hello');
+        }
+    });
 
-	return (
-		<div>
-			<input
-				ref={inputRef}
-				value={values.email}
-				onChange={setValues}
-				name="email"
-			/>
-			<input value={values.username} onChange={setValues} name="username" />
-			<button onClick={() => inputRef.current.focus()}>focus</button>
-			<hr />
-			<div>{loading ? 'loading..' : data}</div>
-			<p>count: {count}</p>
-			<button onClick={() => setCount(count + 1)}>click</button>
-			<hr />
-		</div>
-	);
+    return (
+        <div>
+            <input
+                ref={inputRef}
+                value={values.email}
+                onChange={setValues}
+                name="email"
+            />
+            <input value={values.username} onChange={setValues} name="username" />
+            <button onClick={() => inputRef.current.focus()}>focus</button>
+            <hr />
+            <div>{loading ? 'loading..' : data}</div>
+            <p>count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>click</button>
+            <hr />
+        </div>
+    );
 };
 
 export default App;
-
 ```
 
 useMemo
@@ -414,37 +412,95 @@ import { useAxios } from './useAxios';
 
 // 함수새로추가
 function compute(str) {
-	if (!str) return 0;
-	console.log('computing...');
-	const arr = str.split(' ');
-	let longestSize = 0;
-	arr.forEach(word => {
-		if (longestSize < word.length) {
-			longestSize = word.length;
-		}
-	});
-	return longestSize;
+    if (!str) return 0;
+    console.log('computing...');
+    const arr = str.split(' ');
+    let longestSize = 0;
+    arr.forEach(word => {
+        if (longestSize < word.length) {
+            longestSize = word.length;
+        }
+    });
+    return longestSize;
 }
+
+const App = () => {
+    const [values, setValues] = useForm({ username: '', password: '' });
+    const usernameRef = useRef();
+
+    const { data } = useAxios('https://jsonplaceholder.typicode.com/posts/1');
+
+       // 이거추가
+    const getLongest = useMemo(() => compute(data), [data]);
+
+    return (
+        <div>
+        // 여기추가
+            <ul>
+                {data &&
+                    data.split(' ').map((item, index) => {
+                        return <li key={index}>{item}</li>;
+                    })}
+            </ul>
+            <p>{getLongest}</p>
+            <hr />
+            <input
+                ref={usernameRef}
+                value={values.username}
+                onChange={setValues}
+                name="username"
+            />
+            <input value={values.password} onChange={setValues} name="password" />
+            <button
+                onClick={() => {
+                    usernameRef.current.focus();
+                }}
+            >
+                focus
+            </button>
+        </div>
+    );
+};
+
+export default App;
+```
+
+useCallback
+
+```jsx
+// src/Button.js
+
+import React, { useRef } from 'react';
+
+const Button = React.memo(({ onIncrement }) => {
+	const count = useRef(0);
+	console.log('renders', count.current++);
+
+	return <button onClick={onIncrement}>click</button>;
+});
+
+export default Button;
+
+
+//App.js
+import React, { useRef, useState, useCallback } from 'react';
+import Button from './Button';
+import { useForm } from './useForm';
 
 const App = () => {
 	const [values, setValues] = useForm({ username: '', password: '' });
 	const usernameRef = useRef();
 
-	const { data } = useAxios('https://jsonplaceholder.typicode.com/posts/1');
+	const [count, setCount] = useState(0);
 
-       // 이거추가
-	const getLongest = useMemo(() => compute(data), [data]);
+	const increment = useCallback(() => {
+		setCount(count => count + 1);
+	}, [setCount]);
 
 	return (
 		<div>
-		// 여기추가
-			<ul>
-				{data &&
-					data.split(' ').map((item, index) => {
-						return <li key={index}>{item}</li>;
-					})}
-			</ul>
-			<p>{getLongest}</p>
+			<h1>{count}</h1>
+			<Button onIncrement={increment} />
 			<hr />
 			<input
 				ref={usernameRef}
