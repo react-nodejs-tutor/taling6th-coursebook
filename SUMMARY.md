@@ -11,6 +11,7 @@
 * [saga](saga.md)
 * [hooks](hooks.md)
 * [redux final](redux-final.md)
+* [lec](lec.md)
 
 ## 1강
 

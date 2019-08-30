@@ -2,10 +2,10 @@ generator 문법부터 알아야함
 
 ```jsx
 function *test(){
-	console.log(1);
-	yield '2';
-	console.log(3);
-	yield '4';
+    console.log(1);
+    yield '2';
+    console.log(3);
+    yield '4';
 }
 
 const b = test()
@@ -23,8 +23,6 @@ c
 
 시작
 
-
-
 ```jsx
 // index.js
 
@@ -38,14 +36,13 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById('root')
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
 );
 
 serviceWorker.unregister();
-
 ```
 
 ```jsx
@@ -70,48 +67,47 @@ const rejected = createAction(REJECTED, error => error);
 
 // 추가
 function* callNewsSaga(action) {
-	yield put(pending());
+    yield put(pending());
 
-	try {
-		const response = yield call(callNewsAPI, action.payload);
-		yield put(resolved(response));
-	} catch (e) {
-		yield put(rejected(e));
-	}
+    try {
+        const response = yield call(callNewsAPI, action.payload);
+        yield put(resolved(response));
+    } catch (e) {
+        yield put(rejected(e));
+    }
 }
 
 // 그리고 쪼그마난 사가들을 한번에 묶어줌
 export function* newsSaga() {
-	yield takeEvery(CALL_NEWS, callNewsSaga);
+    yield takeEvery(CALL_NEWS, callNewsSaga);
 }
 
 const initialState = {
-	pending: false,
-	data: null,
-	error: null
+    pending: false,
+    data: null,
+    error: null
 };
 
 export default handleActions(
-	{
-		[PENDING]: (state, action) => ({
-			...state,
-			pending: true,
-			error: false
-		}),
-		[RESOLVED]: (state, action) => ({
-			...state,
-			data: action.payload,
-			pending: false
-		}),
-		[REJECTED]: (state, action) => ({
-			...state,
-			pending: false,
-			error: action.payload
-		})
-	},
-	initialState
+    {
+        [PENDING]: (state, action) => ({
+            ...state,
+            pending: true,
+            error: false
+        }),
+        [RESOLVED]: (state, action) => ({
+            ...state,
+            data: action.payload,
+            pending: false
+        }),
+        [REJECTED]: (state, action) => ({
+            ...state,
+            pending: false,
+            error: action.payload
+        })
+    },
+    initialState
 );
-
 ```
 
 ```jsx
@@ -126,14 +122,13 @@ import form from './form';
 import post from './post';
 
 export function* rootSaga() {
-	yield all([newsSaga()]);
+    yield all([newsSaga()]);
 }
 
 export default combineReducers({
-	form,
-	post
+    form,
+    post
 });
-
 ```
 
 ```jsx
@@ -153,15 +148,15 @@ sagaMiddleware.run(rootSaga);
 ```jsx
 // App.js
 
-	handleSubmit = e => {
-		e.preventDefault();
+    handleSubmit = e => {
+        e.preventDefault();
 
-		const { PostActions, FormActions, input } = this.props;
+        const { PostActions, FormActions, input } = this.props;
 
                //이거만 바꿔준다 
-		PostActions.callNews(input);
-		FormActions.changeInput('');
-	};
+        PostActions.callNews(input);
+        FormActions.changeInput('');
+    };
 ```
 
 
